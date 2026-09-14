@@ -1,0 +1,62 @@
+* {
+  box-sizing: border-box;
+}
+
+/* html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+} */
+
+h1 {
+  font-size: 2rem;
+  margin: 0;
+  padding: 10px;
+  /* font-weight: 500; */
+  font: var(--mat-sys-headline-large);
+  letter-spacing: var(--mat-sys-headline-large-tracking);
+}
+
+.no-text-select {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* AppBar drag and no-drag regions */
+.app-bar-drag {
+  -webkit-app-region: drag;
+}
+
+.app-bar-no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/* 
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+.material-symbols-outlined-small {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 20;
+}
+
+.material-symbols-outlined-large {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 40;
+} */

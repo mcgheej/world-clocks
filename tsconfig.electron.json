@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node16",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "module": "node16",
+    "target": "es2015",
+    "types": ["node"],
+    "lib": ["es2017", "es2016", "es2015", "dom"],
+    "rootDir": ".",
+    "outDir": "apps/electron-app/out-tsc",
+    "paths": {
+      "@context-bridge/*": ["./libs/angular-electron/context-bridge/*"]
+    }
+  },
+  "include": ["apps/electron-app/**/*.ts", "libs/angular-electron/**/*.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts", "apps/renderer-app/**/*.ts"]
+}

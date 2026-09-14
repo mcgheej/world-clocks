@@ -1,0 +1,15 @@
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "types": [],
+    "paths": {
+      "@context-bridge/*": ["../../libs/angular-electron/context-bridge/*"],
+      "@electron-api/*": ["../../libs/angular/core/electron-api/*"],
+      "@ui/app-bar/*": ["../../libs/angular/ui/app-bar/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "../../libs/angular/**/*.ts", "../../libs/angular-electron/**/*.ts"],
+  "exclude": ["src/**/*.spec.ts"]
+}

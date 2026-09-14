@@ -1,0 +1,48 @@
+{
+  "name": "electron-skeleton",
+  "version": "0.0.0",
+  "main": "apps/electron-app/out-tsc/apps/electron-app/main.js",
+  "scripts": {
+    "ng": "ng",
+    "start": "npm-run-all -p electron:serve ng:serve",
+    "ng:serve": "ng serve -c dev",
+    "build": "npm run electron:serve-tsc && ng build --base-href ./",
+    "web:dev": "npm run build",
+    "web:prod": "npm run build -- -c production",
+    "electron": "electron",
+    "electron:serve-tsc": "tsc -p tsconfig.electron.json",
+    "electron:serve": "wait-on tcp:4200 && npm run electron:serve-tsc && electron . --serve",
+    "electron:local": "npm run web:dev && electron ./apps/electron-app/out-tsc",
+    "electron:build": "npm run web:prod && electron-builder build --publish=never",
+    "test": "ng test"
+  },
+  "private": true,
+  "packageManager": "npm@11.5.2",
+  "dependencies": {
+    "@angular/cdk": "^22.1.6",
+    "@angular/common": "^22.1.0",
+    "@angular/compiler": "^22.1.0",
+    "@angular/core": "^22.1.0",
+    "@angular/forms": "^22.1.0",
+    "@angular/material": "^22.1.6",
+    "@angular/platform-browser": "^22.1.0",
+    "@angular/router": "^22.1.0",
+    "electron-settings": "^4.0.4",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^22.1.8",
+    "@angular/cli": "^22.1.8",
+    "@angular/compiler-cli": "^22.1.0",
+    "electron": "^44.3.0",
+    "electron-builder": "^26.15.3",
+    "electron-debug": "^4.1.0",
+    "electron-reloader": "^1.2.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.8.1",
+    "ts-node": "^10.9.2",
+    "typescript": "~6.0.2",
+    "wait-on": "^9.1.0"
+  }
+}
