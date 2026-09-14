@@ -7,6 +7,8 @@
     "paths": {
       "@context-bridge/*": ["../../libs/angular-electron/context-bridge/*"],
       "@electron-api/*": ["../../libs/angular/core/electron-api/*"],
+      "@data/data-models/*": ["../../libs/angular/data/data-models/*"],
+      "@data/storage/*": ["../../libs/angular/data/storage/*"],
       "@ui/app-bar/*": ["../../libs/angular/ui/app-bar/*"]
     }
   },
