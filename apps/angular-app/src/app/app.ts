@@ -1,13 +1,14 @@
 import { Component, signal } from '@angular/core';
+import { ClockBoard } from '@features/clock-board/index';
 import { AppBar } from '@ui/app-bar/index';
 
 @Component({
-  imports: [AppBar],
+  imports: [AppBar, ClockBoard],
   selector: 'app-root',
   template: `
     <div class="app-container">
       <tfx-app-bar />
-      <h1>Hello, {{ title() }}</h1>
+      <tfx-clock-board />
     </div>
   `,
   styles: [

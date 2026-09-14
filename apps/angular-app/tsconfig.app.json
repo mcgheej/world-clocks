@@ -9,6 +9,8 @@
       "@electron-api/*": ["../../libs/angular/core/electron-api/*"],
       "@data/data-models/*": ["../../libs/angular/data/data-models/*"],
       "@data/storage/*": ["../../libs/angular/data/storage/*"],
+      "@data/data-layer/*": ["../../libs/angular/data/data-layer/*"],
+      "@features/clock-board/*": ["../../libs/angular/features/clock-board/*"],
       "@ui/app-bar/*": ["../../libs/angular/ui/app-bar/*"]
     }
   },
