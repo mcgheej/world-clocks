@@ -1,5 +1,5 @@
 {
-  "name": "electron-skeleton",
+  "name": "world-clocks",
   "version": "0.0.0",
   "main": "apps/electron-app/out-tsc/apps/electron-app/main.js",
   "scripts": {
