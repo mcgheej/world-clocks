@@ -1,9 +1,12 @@
 import { Component, computed, inject } from '@angular/core';
+import { ClockPanel } from './clock-panel';
+import { UTCTimerService } from '@core/utc-timer/index';
 import { ClockBoardDataService } from '@data/data-layer/index';
+import { ClockProfile } from '@data/data-models/index';
 
 @Component({
   selector: 'tfx-clock-board',
-  imports: [],
+  imports: [ClockPanel],
   template: `
     <div
       class="clock-board"
@@ -12,7 +15,12 @@ import { ClockBoardDataService } from '@data/data-layer/index';
       [style.rowRule]="'2px solid black'"
     >
       @for (clock of clockProfiles(); track clock.placeName) {
-        <div class="clock"></div>
+        <tfx-clock-panel
+          [clockProfile]="clock"
+          [utcTime]="utcTime()"
+          (editClock)="editClock(clock)"
+        />
+        <!-- <div class="clock"></div> -->
       }
     </div>
   `,
@@ -31,6 +39,7 @@ import { ClockBoardDataService } from '@data/data-layer/index';
 export class ClockBoard {
   private readonly clockBoardDataService = inject(ClockBoardDataService);
 
+  protected readonly utcTime = inject(UTCTimerService).utcTime;
   protected readonly clockProfiles = this.clockBoardDataService.clockProfiles;
   private numberOfColumns = this.clockBoardDataService.numberOfColumns;
 
@@ -39,4 +48,8 @@ export class ClockBoard {
     const t = `repeat(${columnsToUse}, 1fr)`;
     return t;
   });
+
+  protected editClock(clockData: ClockProfile): void {
+    console.log(`Edit clock: ${clockData.placeName}`);
+  }
 }

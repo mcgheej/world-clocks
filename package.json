@@ -27,6 +27,8 @@
     "@angular/material": "^22.1.6",
     "@angular/platform-browser": "^22.1.0",
     "@angular/router": "^22.1.0",
+    "@date-fns/tz": "^1.5.0",
+    "date-fns": "^4.4.0",
     "electron-settings": "^4.0.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
