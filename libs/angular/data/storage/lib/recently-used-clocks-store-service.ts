@@ -31,7 +31,9 @@ export class RecentlyUsedClocksStoreService {
 
   constructor() {
     try {
-      const stored = localStorage.getItem(RECENTLY_USED_CLOCKS_KEY);
+      // TODO: Implement retrieval from localStorage when ready
+      // const stored = localStorage.getItem(RECENTLY_USED_CLOCKS_KEY);
+      const stored = null;
       stored
         ? this._recentlyUsedClocks.set(JSON.parse(stored) as ClockProfile[])
         : this.saveRecentlyUsedClocks(initialRecentlyUsed);

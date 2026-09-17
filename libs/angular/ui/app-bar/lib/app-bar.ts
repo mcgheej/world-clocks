@@ -12,14 +12,20 @@
 
 import { Component, inject } from '@angular/core';
 import { AppBarButton } from './app-bar-button';
+import { AppBarMenu } from './app-bar-menu';
 import { ElectronApiService } from '@electron-api/index';
+import { CdkMenuTrigger } from '@angular/cdk/menu';
 
 @Component({
   selector: 'tfx-app-bar',
-  imports: [AppBarButton],
+  imports: [CdkMenuTrigger, AppBarButton, AppBarMenu],
   template: `
     <nav class="app-bar">
-      <tfx-app-bar-button iconName="menu" [stopPropagation]="false"></tfx-app-bar-button>
+      <tfx-app-bar-button
+        iconName="menu"
+        [stopPropagation]="false"
+        [cdkMenuTriggerFor]="appMenu"
+      ></tfx-app-bar-button>
       <div class="app-bar-title app-bar-drag">World Clocks</div>
       @if (electronApi() !== null) {
         <tfx-app-bar-button iconName="remove" (buttonClick)="minimizeWindow()"></tfx-app-bar-button>
@@ -36,6 +42,9 @@ import { ElectronApiService } from '@electron-api/index';
         }
         <tfx-app-bar-button iconName="close" (buttonClick)="closeApp()"></tfx-app-bar-button>
       }
+      <ng-template #appMenu>
+        <tfx-app-bar-menu></tfx-app-bar-menu>
+      </ng-template>
     </nav>
   `,
   styles: [
@@ -47,11 +56,12 @@ import { ElectronApiService } from '@electron-api/index';
         background-color: var(--mat-sys-primary);
         color: var(--mat-sys-on-primary);
         padding-inline: 8px;
-        font: var(--mat-sys-title-medium);
       }
 
       .app-bar-title {
         align-self: center;
+        font: var(--mat-sys-title-medium);
+        letter-spacing: var(--mat-sys-title-medium-tracking);
         padding-inline: 8px;
       }
     `,

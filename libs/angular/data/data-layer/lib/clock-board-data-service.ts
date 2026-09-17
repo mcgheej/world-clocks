@@ -12,6 +12,7 @@ export class ClockBoardDataService {
 
   readonly numberOfColumns = computed(() => this.clockBoardConfig().numberOfColumns);
   readonly clockProfiles = computed(() => this.clockBoardConfig().clockProfiles);
+  readonly recentlyUsedClocks = this.recentlyUsedClocksService.recentlyUsedClocks;
 
   // Updates the number of columns in the clock board configuration
   // using immutable update pattern

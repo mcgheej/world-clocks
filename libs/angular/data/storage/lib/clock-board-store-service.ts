@@ -52,6 +52,7 @@ export class ClockBoardStoreService {
 
   constructor() {
     try {
+      // TODO: Implement retrieval from localStorage when ready
       // const rawClockBoardConfig = localStorage.getItem(CLOCK_BOARD_KEY);
       const rawClockBoardConfig = null;
       rawClockBoardConfig
