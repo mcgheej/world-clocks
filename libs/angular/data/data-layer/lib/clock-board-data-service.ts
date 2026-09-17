@@ -17,11 +17,16 @@ export class ClockBoardDataService {
   // Updates the number of columns in the clock board configuration
   // using immutable update pattern
   updateNumberOfColumns(columns: number): void {
-    const updatedConfig = {
-      ...this.clockBoardConfig(),
-      numberOfColumns: columns,
-    };
-    this.clockBoardStoreService.saveClockBoardConfig(updatedConfig);
+    console.log(
+      `Updating number of columns to ${columns} from ${this.clockBoardConfig().numberOfColumns}`,
+    );
+    if (columns !== this.clockBoardConfig().numberOfColumns) {
+      const updatedConfig = {
+        ...this.clockBoardConfig(),
+        numberOfColumns: columns,
+      };
+      this.clockBoardStoreService.saveClockBoardConfig(updatedConfig);
+    }
   }
 
   // Adds a new clock profile to the clock board configuration

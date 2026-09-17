@@ -14,7 +14,8 @@
       "@data/storage/*": ["../../libs/angular/data/storage/*"],
       "@data/data-layer/*": ["../../libs/angular/data/data-layer/*"],
       "@features/clock-board/*": ["../../libs/angular/features/clock-board/*"],
-      "@ui/app-bar/*": ["../../libs/angular/ui/app-bar/*"]
+      "@ui/app-bar/*": ["../../libs/angular/ui/app-bar/*"],
+      "@ui/app-dialogs/*": ["../../libs/angular/ui/app-dialogs/*"]
     }
   },
   "include": ["src/**/*.ts", "../../libs/angular/**/*.ts", "../../libs/angular-electron/**/*.ts"],

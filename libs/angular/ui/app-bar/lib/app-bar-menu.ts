@@ -30,13 +30,15 @@ import { ElectronApiService } from '@electron-api/index';
       }
 
       <ng-template #recentlyUsedMenu>
-        <div class="tfx-menu" cdkMenu>
-          @for (clock of recentlyUsedClocks(); track clock.placeName) {
-            <button cdkMenuItem (click)="addClockFromRecentlyUsed(clock, $index)">
-              {{ clock.placeName }}
-            </button>
-          }
-        </div>
+        @if (numberOfRecentlyUsedClocks() > 0) {
+          <div class="tfx-menu" cdkMenu>
+            @for (clock of recentlyUsedClocks(); track clock.placeName) {
+              <button cdkMenuItem (click)="addClockFromRecentlyUsed(clock, $index)">
+                {{ clock.placeName }}
+              </button>
+            }
+          </div>
+        }
       </ng-template>
     </div>
   `,

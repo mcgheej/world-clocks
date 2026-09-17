@@ -1,0 +1,37 @@
+<h2>Columns</h2>
+<form>
+  <label>
+    Number of Columns:
+
+    <input
+      type="text"
+      inputmode="numeric"
+      tfxFocusSelect
+      [formField]="numberOfColumnsForm.numberOfColumns"
+      (keydown)="onNumberOfColumnsKeydown($event)"
+    />
+  </label>
+  @if (
+    numberOfColumnsForm.numberOfColumns().touched() &&
+    numberOfColumnsForm.numberOfColumns().invalid()
+  ) {
+    <ul>
+      @for (error of numberOfColumnsForm.numberOfColumns().errors(); track error.kind) {
+        <li>{{ error.message }}</li>
+      }
+    </ul>
+  } @else {
+    <div class="hint">Must be a number between 1 and 5</div>
+  }
+
+  <div class="button-container">
+    <button type="button" (click)="dialogRef.close()">Cancel</button>
+    <button
+      type="button"
+      [disabled]="numberOfColumnsForm().invalid()"
+      (click)="dialogRef.close(numberOfColumnsForm().value().numberOfColumns)"
+    >
+      Save
+    </button>
+  </div>
+</form>
