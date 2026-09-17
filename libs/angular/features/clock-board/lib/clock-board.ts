@@ -1,8 +1,10 @@
 import { Component, computed, inject } from '@angular/core';
+import { CommandBusService } from '@core/command-bus/index';
 import { ClockPanel } from './clock-panel';
 import { UTCTimerService } from '@core/utc-timer/index';
 import { ClockBoardDataService } from '@data/data-layer/index';
 import { ClockProfile } from '@data/data-models/index';
+import { AppBarMenuCommands } from '@core/app-commands/index';
 
 @Component({
   selector: 'tfx-clock-board',
@@ -38,6 +40,7 @@ import { ClockProfile } from '@data/data-models/index';
 })
 export class ClockBoard {
   private readonly clockBoardDataService = inject(ClockBoardDataService);
+  private readonly commandBus = inject(CommandBusService);
 
   protected readonly utcTime = inject(UTCTimerService).utcTime;
   protected readonly clockProfiles = this.clockBoardDataService.clockProfiles;
@@ -51,5 +54,28 @@ export class ClockBoard {
 
   protected editClock(clockData: ClockProfile): void {
     console.log(`Edit clock: ${clockData.placeName}`);
+  }
+
+  constructor() {
+    this.commandBus.commands$.subscribe((command) =>
+      handleCommands(command as AppBarMenuCommands.AppBarMenuCommands),
+    );
+  }
+}
+
+function handleCommands(command: AppBarMenuCommands.AppBarMenuCommands) {
+  switch (command.type) {
+    case AppBarMenuCommands.EDIT_NUMBER_OF_COLUMNS:
+      console.log('Changing number of columns...');
+      break;
+    case AppBarMenuCommands.ADD_NEW_CLOCK:
+      console.log('Adding new clock...');
+      break;
+    case AppBarMenuCommands.REARRANGE_CLOCKS:
+      console.log('Rearranging clocks...');
+      break;
+    case AppBarMenuCommands.ADD_CLOCK_FROM_RECENTLY_USED:
+      console.log(`Adding clock ${command.payload.clock.placeName} from recently used...`);
+      break;
   }
 }

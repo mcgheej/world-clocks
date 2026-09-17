@@ -11,10 +11,12 @@
  */
 
 import { Component, inject } from '@angular/core';
+import { CommandBusService } from '@core/command-bus/index';
 import { AppBarButton } from './app-bar-button';
 import { AppBarMenu } from './app-bar-menu';
 import { ElectronApiService } from '@electron-api/index';
 import { CdkMenuTrigger } from '@angular/cdk/menu';
+import { AppBarMenuCommands } from '@core/app-commands/index';
 
 @Component({
   selector: 'tfx-app-bar',
@@ -68,10 +70,19 @@ import { CdkMenuTrigger } from '@angular/cdk/menu';
   ],
 })
 export class AppBar {
+  private readonly commandBus = inject(CommandBusService);
   private readonly electronIF = inject(ElectronApiService);
 
   protected readonly electronApi = this.electronIF.electronApi;
   protected readonly windowMaximized = this.electronIF.windowMaximized;
+
+  constructor() {
+    this.commandBus.commands$.subscribe((command) => {
+      if (command.type === AppBarMenuCommands.EXIT_APP) {
+        this.closeApp();
+      }
+    });
+  }
 
   protected minimizeWindow(): void {
     this.electronApi()?.minimizeWindow();

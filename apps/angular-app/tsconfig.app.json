@@ -8,6 +8,8 @@
       "@context-bridge/*": ["../../libs/angular-electron/context-bridge/*"],
       "@electron-api/*": ["../../libs/angular/core/electron-api/*"],
       "@core/utc-timer/*": ["../../libs/angular/core/utc-timer/*"],
+      "@core/command-bus/*": ["../../libs/angular/core/command-bus/*"],
+      "@core/app-commands/*": ["../../libs/angular/core/app-commands/*"],
       "@data/data-models/*": ["../../libs/angular/data/data-models/*"],
       "@data/storage/*": ["../../libs/angular/data/storage/*"],
       "@data/data-layer/*": ["../../libs/angular/data/data-layer/*"],
