@@ -1,0 +1,13 @@
+<div class="grid size-full grid-rows-[auto_minmax(0,1fr)_auto]">
+  <h2>Re-order Clocks</h2>
+  <div cdkDropList cdkScrollable (cdkDropListDropped)="drop($event)" class="clock-list">
+    @for (clock of clocks; track clock) {
+      <div cdkDrag class="placename-box">{{ clock.placeName }}</div>
+    }
+  </div>
+  <div class="button-container">
+    <div></div>
+    <button type="button" (click)="dialogRef.close()">Cancel</button>
+    <button type="button" [disabled]="listUnchanged()" (click)="saveChanges()">Save</button>
+  </div>
+</div>

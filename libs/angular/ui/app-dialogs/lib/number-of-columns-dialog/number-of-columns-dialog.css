@@ -1,7 +1,7 @@
 :host {
   display: block;
-  background: #fff;
-  color: CanvasText;
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
   border-radius: 8px;
   padding: 8px 16px 16px;
   width: 100%;
@@ -18,9 +18,9 @@
 }
 
 h2 {
-  font-size: 1.5rem;
-  font-weight: bold;
+  font: var(--mat-sys-headline-medium);
   margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 label {
@@ -28,7 +28,7 @@ label {
   flex-direction: column;
   gap: 0.5rem;
   margin-bottom: 0.25rem;
-  font-weight: 500;
+  font: var(--mat-sys-label-large);
 }
 
 label:last-of-type input {
@@ -42,7 +42,7 @@ input {
   padding: 0.2em 0.75rem;
   border: 1px solid #475569;
   border-radius: 4px;
-  font-size: 1rem;
+  font: var(--mat-sys-body-large);
 }
 
 input.ng-invalid.ng-touched {
@@ -59,11 +59,11 @@ input.ng-invalid.ng-touched {
 button {
   width: 30%;
   padding: 0.5rem;
-  background: #007bff;
-  color: white;
+  background: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
   border: none;
   border-radius: 4px;
-  font-size: 1rem;
+  font: var(--mat-sys-label-large);
   cursor: pointer;
 }
 
@@ -73,14 +73,14 @@ button:disabled {
 }
 
 ul {
-  font-size: 0.875rem;
+  font: var(--mat-sys-body-medium);
   color: #e74c3c;
   /* margin-block: -0.75em 1.125em; */
   /* padding-inline-start: 1.125em; */
 }
 
 .hint {
-  font-size: 0.875rem;
+  font: var(--mat-sys-label-large);
   color: #228b22; /* forest green */
   font-style: italic;
   /* margin-block: -0.75em 1.125em;
