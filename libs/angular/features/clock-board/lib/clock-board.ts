@@ -19,7 +19,7 @@ import { ClockBoardService } from './clock-board-service';
         <tfx-clock-panel
           [clockProfile]="clock"
           [utcTime]="utcTime()"
-          (editClock)="editClock(clock)"
+          (editClock)="editClock(clock, $index)"
         />
         <!-- <div class="clock"></div> -->
       }
@@ -52,7 +52,7 @@ export class ClockBoard {
     return t;
   });
 
-  protected editClock(clockData: ClockProfile): void {
-    console.log(`Edit clock: ${clockData.placeName}`);
+  protected editClock(clockData: ClockProfile, index: number): void {
+    this.clockBoardService.editClock(clockData, index);
   }
 }

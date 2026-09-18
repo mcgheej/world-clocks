@@ -20,9 +20,10 @@
         <input type="text" [formField]="clockForm.ianaTimezone" />
       </label>
       @if (clockForm.ianaTimezone().dirty() && clockForm.ianaTimezone().invalid()) {
-        <ul>
+        <!-- <ul>
           <li>{{ clockForm.ianaTimezone().errors()[0].message }}</li>
-        </ul>
+        </ul> -->
+        <div class="error">{{ clockForm.ianaTimezone().errors()[0].message }}</div>
       } @else {
         <div class="hint">Use IANA timezone format, e.g., "America/New_York"</div>
       }

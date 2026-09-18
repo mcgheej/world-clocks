@@ -5,7 +5,11 @@ import { editNumberOfColumns } from './menu-command-handlers/edit-number-of-colu
 import { Dialog } from '@angular/cdk/dialog';
 import { ClockBoardDataService } from '@data/data-layer/index';
 import { ClockProfile } from '@data/data-models/index';
-import { openMoveClockDialog, openNewClockDialog } from '@ui/app-dialogs/index';
+import {
+  openEditClockDialog,
+  openMoveClockDialog,
+  openNewClockDialog,
+} from '@ui/app-dialogs/index';
 
 @Service()
 export class ClockBoardService {
@@ -20,6 +24,18 @@ export class ClockBoardService {
     this.commandBus.commands$.subscribe((command) =>
       this.handleAppBarMenuCommands(command as AppBarMenuCommands.AppBarMenuCommands),
     );
+  }
+
+  editClock(clockProfile: ClockProfile, clockIndex: number) {
+    openEditClockDialog({ dialog: this.dialog, clockProfile, clockIndex }).subscribe((result) => {
+      if (result) {
+        if (result.operation === 'save') {
+          this.clockBoardDataService.updateClockProfile(clockIndex, result.clock);
+        } else if (result.operation === 'delete') {
+          this.clockBoardDataService.deleteClockProfile(clockIndex);
+        }
+      }
+    });
   }
 
   private handleAppBarMenuCommands(command: AppBarMenuCommands.AppBarMenuCommands) {

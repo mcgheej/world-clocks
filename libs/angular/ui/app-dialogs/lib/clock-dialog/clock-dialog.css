@@ -53,6 +53,11 @@ ul {
   font-style: italic;
 }
 
+.error {
+  font: var(--mat-sys-label-large);
+  color: var(--mat-sys-error); /* red for errors */
+}
+
 .checkbox-label {
   display: flex;
   flex-direction: row;
