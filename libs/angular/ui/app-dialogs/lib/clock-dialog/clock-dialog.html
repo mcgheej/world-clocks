@@ -1,0 +1,54 @@
+<h2 class="text-2xl font-bold mb-2">{{ dialogTitle() }}</h2>
+<form>
+  <div class="grid w-full grid-rows-[minmax(0,1fr)_auto]">
+    <div>
+      <label>
+        Place:
+        <input type="text" [formField]="clockForm.placeName" />
+      </label>
+      @if (clockForm.placeName().dirty() && clockForm.placeName().invalid()) {
+        <ul>
+          @for (error of clockForm.placeName().errors(); track error.kind) {
+            <li>{{ error.message }}</li>
+          }
+        </ul>
+      } @else {
+        <div class="hint" [style.visibility]="'hidden'">Place name is required</div>
+      }
+      <label>
+        Timezone:
+        <input type="text" [formField]="clockForm.ianaTimezone" />
+      </label>
+      @if (clockForm.ianaTimezone().dirty() && clockForm.ianaTimezone().invalid()) {
+        <ul>
+          <li>{{ clockForm.ianaTimezone().errors()[0].message }}</li>
+        </ul>
+      } @else {
+        <div class="hint">Use IANA timezone format, e.g., "America/New_York"</div>
+      }
+      <label class="checkbox-label">
+        <input type="checkbox" [formField]="clockForm.withSeconds" />
+        <span>Show seconds hand</span>
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" [formField]="clockForm.withHighlight" />
+        <span>Highlight clock</span>
+      </label>
+    </div>
+    <div class="button-container">
+      @if (clockDialogData.createOrEdit === 'edit') {
+        <button
+          [disabled]="numberOfClocks() <= 1"
+          type="button"
+          (click)="dialogRef.close({ operation: 'delete' })"
+        >
+          Delete
+        </button>
+      } @else {
+        <div></div>
+      }
+      <button type="button" (click)="dialogRef.close()">Cancel</button>
+      <button type="button" [disabled]="clockForm().invalid()" (click)="saveClock()">Save</button>
+    </div>
+  </div>
+</form>

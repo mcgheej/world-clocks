@@ -5,6 +5,7 @@ import { editNumberOfColumns } from './menu-command-handlers/edit-number-of-colu
 import { Dialog } from '@angular/cdk/dialog';
 import { ClockBoardDataService } from '@data/data-layer/index';
 import { ClockProfile } from '@data/data-models/index';
+import { openNewClockDialog } from '@ui/app-dialogs/index';
 
 @Service()
 export class ClockBoardService {
@@ -26,7 +27,7 @@ export class ClockBoardService {
         this.doEditNumberOfColumns();
         break;
       case AppBarMenuCommands.ADD_NEW_CLOCK:
-        console.log('Adding new clock...');
+        this.doAddNewClock();
         break;
       case AppBarMenuCommands.REARRANGE_CLOCKS:
         console.log('Rearranging clocks...');
@@ -41,6 +42,14 @@ export class ClockBoardService {
     editNumberOfColumns(this.numberOfColumns(), this.dialog).subscribe((result) => {
       if (result !== undefined) {
         this.clockBoardDataService.updateNumberOfColumns(result);
+      }
+    });
+  }
+
+  private doAddNewClock() {
+    openNewClockDialog(this.dialog).subscribe((result) => {
+      if (result && result.operation === 'save') {
+        this.clockBoardDataService.addClockProfile(result.clock);
       }
     });
   }

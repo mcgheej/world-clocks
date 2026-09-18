@@ -1,0 +1,119 @@
+:host {
+  display: block;
+  background: #fff;
+  color: CanvasText;
+  border-radius: 8px;
+  padding: 8px 16px 16px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+/* 
+label:last-of-type input {
+  width: 8em;
+} */
+
+input {
+  background-color: #fff;
+  color: inherit;
+  width: 100%;
+  padding: 0.2em 0.75rem;
+  border: 1px solid #475569;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+input.ng-invalid.ng-touched {
+  border-color: #e74c3c;
+}
+
+ul {
+  font-size: 0.875rem;
+  color: #e74c3c;
+  /* margin-block: -0.75em 1.125em; */
+  /* padding-inline-start: 1.125em; */
+}
+
+.hint {
+  font-size: 0.875rem;
+  color: #228b22; /* forest green */
+  font-style: italic;
+  /* margin-block: -0.75em 1.125em;
+  padding-inline-start: 1.125em; */
+}
+
+.checkbox-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  border-radius: 6px;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.checkbox-label span {
+  font-size: 0.875rem;
+  user-select: none;
+}
+
+input[type='checkbox'] {
+  width: 1.125rem;
+  height: 1.125rem;
+  cursor: pointer;
+  accent-color: #3b82f6;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  transition: all 0.15s ease-in-out;
+}
+input[type='checkbox']:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+input[type='checkbox']:checked {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.content-container {
+  display: grid;
+  width: 100%;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.button-container {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.5rem;
+}
+
+button {
+  width: 75px;
+  padding: 0.5rem;
+  background: #005cbb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
