@@ -1,7 +1,7 @@
 import { Service, inject } from '@angular/core';
 import { AppBarMenuCommands } from '@core/app-commands/index';
 import { CommandBusService } from '@core/command-bus/index';
-import { editNumberOfColumns } from './app-bar-menu-commands/edit-number-of-columns';
+import { editNumberOfColumns } from './menu-command-handlers/edit-number-of-columns';
 import { Dialog } from '@angular/cdk/dialog';
 import { ClockBoardDataService } from '@data/data-layer/index';
 import { ClockProfile } from '@data/data-models/index';
@@ -33,7 +33,6 @@ export class ClockBoardService {
         break;
       case AppBarMenuCommands.ADD_CLOCK_FROM_RECENTLY_USED:
         this.doAddRecentlyUsedClock(command.payload.clock);
-        console.log(`Adding clock ${command.payload.clock.placeName} from recently used...`);
         break;
     }
   }

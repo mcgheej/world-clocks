@@ -2,15 +2,18 @@ import { Component, computed, input, output } from '@angular/core';
 import { TZDate } from '@date-fns/tz';
 import { ClockProfile } from '@data/data-models/index';
 import { ClockPanelLabel } from './clock-panel-label';
-import { DatePipe } from '@angular/common';
+import { AnalogClock } from './analog-clock/analog-clock';
 
 @Component({
   selector: 'tfx-clock-panel',
-  imports: [DatePipe, ClockPanelLabel],
+  imports: [ClockPanelLabel, AnalogClock],
   template: `
     <div class="clock-panel">
       <div class="clock-container">
-        <div>{{ localTime() | date: 'longTime' }}</div>
+        <tfx-analog-clock
+          [clockProfile]="clockProfile()"
+          [localTime]="localTime()"
+        ></tfx-analog-clock>
       </div>
       <tfx-clock-panel-label
         [placeName]="clockProfile().placeName"
@@ -24,9 +27,16 @@ import { DatePipe } from '@angular/common';
         height: 100%;
         width: 100%;
         display: grid;
-        grid-template-columns: minmax(0, 1fr);
-        grid-template-rows: minmax(0, 1fr);
+        // grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: minmax(0, 1fr) auto;
+        // background-color: bisque;
+      }
+
+      .clock-container {
         background-color: bisque;
+        display: grid;
+        grid-template-rows: minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr);
       }
     `,
   ],
