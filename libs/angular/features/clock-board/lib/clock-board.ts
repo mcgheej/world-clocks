@@ -18,6 +18,7 @@ import { ClockBoardService } from './clock-board-service';
       @for (clock of clockProfiles(); track clock.placeName) {
         <tfx-clock-panel
           [clockProfile]="clock"
+          [clockIndex]="$index"
           [utcTime]="utcTime()"
           (editClock)="editClock(clock, $index)"
         />

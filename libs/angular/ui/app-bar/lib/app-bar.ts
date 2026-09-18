@@ -45,7 +45,7 @@ import { AppBarMenuCommands } from '@core/app-commands/index';
         <tfx-app-bar-button iconName="close" (buttonClick)="closeApp()"></tfx-app-bar-button>
       }
       <ng-template #appMenu>
-        <tfx-app-bar-menu></tfx-app-bar-menu>
+        <tfx-app-bar-menu />
       </ng-template>
     </nav>
   `,

@@ -1,5 +1,6 @@
 import { Service, inject } from '@angular/core';
 import { AppBarMenuCommands } from '@core/app-commands/index';
+import { ClockContextMenuCommands } from '@core/app-commands/index';
 import { CommandBusService } from '@core/command-bus/index';
 import { editNumberOfColumns } from './menu-command-handlers/edit-number-of-columns';
 import { Dialog } from '@angular/cdk/dialog';
@@ -22,7 +23,10 @@ export class ClockBoardService {
 
   constructor() {
     this.commandBus.commands$.subscribe((command) =>
-      this.handleAppBarMenuCommands(command as AppBarMenuCommands.AppBarMenuCommands),
+      this.handleAppBarMenuCommands(
+        command as
+          AppBarMenuCommands.AppBarMenuCommands | ClockContextMenuCommands.ClockContextMenuCommands,
+      ),
     );
   }
 
@@ -38,7 +42,10 @@ export class ClockBoardService {
     });
   }
 
-  private handleAppBarMenuCommands(command: AppBarMenuCommands.AppBarMenuCommands) {
+  private handleAppBarMenuCommands(
+    command:
+      AppBarMenuCommands.AppBarMenuCommands | ClockContextMenuCommands.ClockContextMenuCommands,
+  ) {
     switch (command.type) {
       case AppBarMenuCommands.EDIT_NUMBER_OF_COLUMNS:
         this.doEditNumberOfColumns();
@@ -52,10 +59,13 @@ export class ClockBoardService {
       case AppBarMenuCommands.ADD_CLOCK_FROM_RECENTLY_USED:
         this.doAddRecentlyUsedClock(command.payload.clock);
         break;
+      case ClockContextMenuCommands.TOGGLE_SHOW_SECONDS:
+        this.doToggleShowSeconds(command.payload.index);
+        break;
     }
   }
 
-  private doEditNumberOfColumns() {
+  private doEditNumberOfColumns(): void {
     editNumberOfColumns(this.numberOfColumns(), this.dialog).subscribe((result) => {
       if (result !== undefined) {
         this.clockBoardDataService.updateNumberOfColumns(result);
@@ -63,7 +73,7 @@ export class ClockBoardService {
     });
   }
 
-  private doAddNewClock() {
+  private doAddNewClock(): void {
     openNewClockDialog(this.dialog).subscribe((result) => {
       if (result && result.operation === 'save') {
         this.clockBoardDataService.addClockProfile(result.clock);
@@ -71,7 +81,7 @@ export class ClockBoardService {
     });
   }
 
-  private doRearrangeClocks() {
+  private doRearrangeClocks(): void {
     openMoveClockDialog(this.dialog, this.clockBoardDataService.clockProfiles()).subscribe(
       (result) => {
         if (result) {
@@ -81,7 +91,16 @@ export class ClockBoardService {
     );
   }
 
-  private doAddRecentlyUsedClock(clockProfile: ClockProfile) {
+  private doAddRecentlyUsedClock(clockProfile: ClockProfile): void {
     this.clockBoardDataService.addClockProfile(clockProfile);
+  }
+
+  private doToggleShowSeconds(clockIndex: number): void {
+    console.log('Executing toggle show seconds logic');
+    const clockProfile = this.clockBoardDataService.clockProfiles()[clockIndex];
+    this.clockBoardDataService.updateClockProfile(clockIndex, {
+      ...clockProfile,
+      withSeconds: !clockProfile.withSeconds,
+    });
   }
 }
