@@ -62,6 +62,18 @@ export class ClockBoardService {
       case ClockContextMenuCommands.TOGGLE_SHOW_SECONDS:
         this.doToggleShowSeconds(command.payload.index);
         break;
+      case ClockContextMenuCommands.TOGGLE_HIGHLIGHT_CLOCK:
+        this.doToggleHighlightClock(command.payload.index);
+        break;
+      case ClockContextMenuCommands.EDIT_CLOCK:
+        this.editClock(command.payload.clock, command.payload.index);
+        break;
+      case ClockContextMenuCommands.DELETE_CLOCK:
+        this.clockBoardDataService.deleteClockProfile(command.payload.index);
+        break;
+      case ClockContextMenuCommands.REPLACE_CLOCK_FROM_RECENTLY_USED:
+        this.doReplaceClockFromRecentlyUsed(command.payload.clock, command.payload.index);
+        break;
     }
   }
 
@@ -96,11 +108,22 @@ export class ClockBoardService {
   }
 
   private doToggleShowSeconds(clockIndex: number): void {
-    console.log('Executing toggle show seconds logic');
     const clockProfile = this.clockBoardDataService.clockProfiles()[clockIndex];
     this.clockBoardDataService.updateClockProfile(clockIndex, {
       ...clockProfile,
       withSeconds: !clockProfile.withSeconds,
     });
+  }
+
+  private doToggleHighlightClock(clockIndex: number): void {
+    const clockProfile = this.clockBoardDataService.clockProfiles()[clockIndex];
+    this.clockBoardDataService.updateClockProfile(clockIndex, {
+      ...clockProfile,
+      withHighlight: !clockProfile.withHighlight,
+    });
+  }
+
+  private doReplaceClockFromRecentlyUsed(clockProfile: ClockProfile, clockIndex: number): void {
+    this.clockBoardDataService.updateClockProfile(clockIndex, { ...clockProfile });
   }
 }

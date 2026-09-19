@@ -66,7 +66,9 @@ export class ClockContextMenu {
     this.commandBus.emit(ClockContextMenuCommands.toggleShowSeconds({ index: this.clockIndex() }));
   }
   protected toggleHighlightClock(): void {
-    this.commandBus.emit(ClockContextMenuCommands.toggleHighlightClock());
+    this.commandBus.emit(
+      ClockContextMenuCommands.toggleHighlightClock({ index: this.clockIndex() }),
+    );
   }
   protected editClock(): void {
     this.commandBus.emit(

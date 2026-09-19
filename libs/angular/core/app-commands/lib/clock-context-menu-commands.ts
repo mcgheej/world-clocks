@@ -9,7 +9,10 @@ export const REPLACE_CLOCK_FROM_RECENTLY_USED =
   '[ClockContextMenu] replace clock from recently used';
 
 export const toggleShowSeconds = createCommand(TOGGLE_SHOW_SECONDS, props<{ index: number }>());
-export const toggleHighlightClock = createCommand(TOGGLE_HIGHLIGHT_CLOCK);
+export const toggleHighlightClock = createCommand(
+  TOGGLE_HIGHLIGHT_CLOCK,
+  props<{ index: number }>(),
+);
 export const editClock = createCommand(EDIT_CLOCK, props<{ clock: ClockProfile; index: number }>());
 export const deleteClock = createCommand(DELETE_CLOCK, props<{ index: number }>());
 export const replaceClockFromRecentlyUsed = createCommand(
