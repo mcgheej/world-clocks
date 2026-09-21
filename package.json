@@ -37,6 +37,7 @@
     "@angular/build": "^22.1.8",
     "@angular/cli": "^22.1.8",
     "@angular/compiler-cli": "^22.1.0",
+    "angular-cli-ghpages": "^3.1.0",
     "electron": "^44.3.0",
     "electron-builder": "^26.15.3",
     "electron-debug": "^4.1.0",
