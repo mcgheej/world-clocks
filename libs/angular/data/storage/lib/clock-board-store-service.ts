@@ -12,36 +12,6 @@ const initialClockBoardConfig: ClockBoardConfig = {
       withHighlight: true,
       withSeconds: true,
     },
-    {
-      placeName: 'Paris',
-      ianaTimezone: 'Europe/Paris',
-      withHighlight: false,
-      withSeconds: false,
-    },
-    {
-      placeName: 'Barcelona',
-      ianaTimezone: 'Europe/Madrid',
-      withHighlight: false,
-      withSeconds: false,
-    },
-    {
-      placeName: 'New York',
-      ianaTimezone: 'America/New_York',
-      withHighlight: false,
-      withSeconds: false,
-    },
-    {
-      placeName: 'Chicago',
-      ianaTimezone: 'America/Chicago',
-      withHighlight: false,
-      withSeconds: false,
-    },
-    {
-      placeName: 'Seattle',
-      ianaTimezone: 'America/Los_Angeles',
-      withHighlight: false,
-      withSeconds: false,
-    },
   ],
 };
 
@@ -52,9 +22,7 @@ export class ClockBoardStoreService {
 
   constructor() {
     try {
-      // TODO: Implement retrieval from localStorage when ready
-      // const rawClockBoardConfig = localStorage.getItem(CLOCK_BOARD_KEY);
-      const rawClockBoardConfig = null;
+      const rawClockBoardConfig = localStorage.getItem(CLOCK_BOARD_KEY);
       rawClockBoardConfig
         ? this._clockBoardConfig.set(JSON.parse(rawClockBoardConfig) as ClockBoardConfig)
         : this.saveClockBoardConfig(initialClockBoardConfig);

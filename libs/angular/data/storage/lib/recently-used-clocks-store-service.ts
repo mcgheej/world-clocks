@@ -5,6 +5,36 @@ const RECENTLY_USED_CLOCKS_KEY = 'world-clocks.recentlyUsedClocks';
 
 const initialRecentlyUsed: ClockProfile[] = [
   {
+    placeName: 'Paris',
+    ianaTimezone: 'Europe/Paris',
+    withHighlight: false,
+    withSeconds: false,
+  },
+  {
+    placeName: 'Barcelona',
+    ianaTimezone: 'Europe/Madrid',
+    withHighlight: false,
+    withSeconds: false,
+  },
+  {
+    placeName: 'New York',
+    ianaTimezone: 'America/New_York',
+    withHighlight: false,
+    withSeconds: false,
+  },
+  {
+    placeName: 'Chicago',
+    ianaTimezone: 'America/Chicago',
+    withHighlight: false,
+    withSeconds: false,
+  },
+  {
+    placeName: 'Seattle',
+    ianaTimezone: 'America/Los_Angeles',
+    withHighlight: false,
+    withSeconds: false,
+  },
+  {
     placeName: 'Mumbai',
     ianaTimezone: 'Asia/Kolkata',
     withHighlight: false,
@@ -31,9 +61,7 @@ export class RecentlyUsedClocksStoreService {
 
   constructor() {
     try {
-      // TODO: Implement retrieval from localStorage when ready
-      // const stored = localStorage.getItem(RECENTLY_USED_CLOCKS_KEY);
-      const stored = null;
+      const stored = localStorage.getItem(RECENTLY_USED_CLOCKS_KEY);
       stored
         ? this._recentlyUsedClocks.set(JSON.parse(stored) as ClockProfile[])
         : this.saveRecentlyUsedClocks(initialRecentlyUsed);
