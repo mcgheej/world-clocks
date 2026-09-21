@@ -25,6 +25,7 @@ import { ElectronApiService } from '@electron-api/index';
       <button cdkMenuItem [disabled]="numberOfClockProfiles() <= 1" (click)="rearrangeClocks()">
         Rearrange clocks...
       </button>
+      <button cdkMenuItem (click)="showAbout()">About...</button>
       @if (electronApi() !== null) {
         <button cdkMenuItem (click)="exitApp()">Exit</button>
       }
@@ -68,6 +69,10 @@ export class AppBarMenu {
 
   protected addClockFromRecentlyUsed(clock: ClockProfile, index: number) {
     this.commandBus.emit(AppBarMenuCommands.addClockFromRecentlyUsed({ clock, index }));
+  }
+
+  protected showAbout() {
+    this.commandBus.emit(AppBarMenuCommands.showAbout());
   }
 
   protected exitApp() {

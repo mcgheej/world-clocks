@@ -14,6 +14,7 @@ export const ADD_NEW_CLOCK = '[AppBarMenu] add new clock';
 export const ADD_CLOCK_FROM_RECENTLY_USED = '[AppBarMenu] add clock from recently used';
 export const REARRANGE_CLOCKS = '[AppBarMenu] rearrange clocks';
 export const EXIT_APP = '[AppBarMenu] exit app';
+export const SHOW_ABOUT = '[AppBarMenu] show about';
 
 export const editNumberOfColumns = createCommand(EDIT_NUMBER_OF_COLUMNS);
 export const addNewClock = createCommand(ADD_NEW_CLOCK);
@@ -23,10 +24,12 @@ export const addClockFromRecentlyUsed = createCommand(
 );
 export const rearrangeClocks = createCommand(REARRANGE_CLOCKS);
 export const exitApp = createCommand(EXIT_APP);
+export const showAbout = createCommand(SHOW_ABOUT);
 
 export type AppBarMenuCommands =
   | ReturnType<typeof editNumberOfColumns>
   | ReturnType<typeof addNewClock>
   | ReturnType<typeof addClockFromRecentlyUsed>
   | ReturnType<typeof rearrangeClocks>
-  | ReturnType<typeof exitApp>;
+  | ReturnType<typeof exitApp>
+  | ReturnType<typeof showAbout>;

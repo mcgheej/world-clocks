@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { AboutService } from '@core/about/index';
 import { ClockBoard } from '@features/clock-board/index';
 import { AppBar } from '@ui/app-bar/index';
 
@@ -23,5 +24,6 @@ import { AppBar } from '@ui/app-bar/index';
   ],
 })
 export class App {
+  private readonly aboutService = inject(AboutService);
   protected readonly title = signal('angular-app');
 }
